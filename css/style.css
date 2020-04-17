@@ -1,0 +1,64 @@
+body{
+	overflow: overlay;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: black;
+}
+::-webkit-resizer{
+	background: #6f99ff;
+}
+svg{
+	fill: white;
+}
+.absolute{
+	position: absolute;
+}
+.w-a{
+	width: 100%;
+}
+.h-a{
+	height: 100%;
+}
+.h-15{
+	height: 11rem;
+}
+.h-20{
+	height: 20vh;
+}
+.h-40{
+	height: 40vh;
+}
+.h-60{
+	height: 60vh;
+}
+.overlay{
+	overflow: overlay;
+}
+.pointer{
+	cursor: pointer;
+}
+.exact-wrapper{
+	height: 100vh;
+}
+.wrapper{
+	min-height: 100vh;
+}
+.heaven
+{
+	position:absolute;
+	height: 150px;
+	width: 150px;
+	z-index: 100;
+}
