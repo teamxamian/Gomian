@@ -1,15 +1,15 @@
 var input = document.getElementById("select-theme");
-function compile() {
+function compile(){
+    code.open();
+    code.writeln("<script>" + editorJs.getValue() + "</script>");
+    code.close();
+}
+function _init_() {
     var html = document.getElementById("code-html");
     var css = document.getElementById("code-css");
     var js = document.getElementById("code-js");
     var code = document.getElementById("show-code").contentWindow.document;
 
-    document.body.onkeyup = function(){
-        code.open();
-        code.writeln("<script>" + editorJs.getValue() + "</script>");
-        code.close();
-    };
     var editorJs = CodeMirror.fromTextArea(document.getElementById("code-js"), {
         lineNumbers: true,
         mode: "javascript",
