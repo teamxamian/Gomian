@@ -1,3 +1,4 @@
+var input = document.getElementById("select-theme");
 function compile() {
     var html = document.getElementById("code-html");
     var css = document.getElementById("code-css");
@@ -10,7 +11,6 @@ function compile() {
         code.close();
     };
     var editorJs = CodeMirror.fromTextArea(document.getElementById("code-js"), {
-        value: dataProyect.findByName("game"),
         lineNumbers: true,
         mode: "javascript",
         keyMap: "sublime",
@@ -21,6 +21,7 @@ function compile() {
         tabSize: 4,
         extraKeys:{"Shift-Space":"autocomplete"}
     });
+    editorJs.getDoc().setValue(dataProyect.findByName("game").content);
     editorJs.on('keyup', function(editor, event){
         if(event.key != "{" && event.key != "}" && event.key != "Backspace" &&
             event.key != "Shift" && event.key != "ArrowLeft" && 
@@ -45,11 +46,10 @@ function compile() {
         var theme = location.hash.slice(1);
         if (theme) { input.value = theme; selectTheme(); }
     });
-};
 
-var input = document.getElementById("select-theme");
-function selectTheme() {
-    var theme = input.options[input.selectedIndex].textContent;
-    editorJs.setOption("theme", theme);
-    location.hash = "#" + theme;
-}
+    function selectTheme() {
+        var theme = input.options[input.selectedIndex].textContent;
+        editorJs.setOption("theme", theme);
+        location.hash = "#" + theme;
+    }
+};

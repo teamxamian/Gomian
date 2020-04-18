@@ -32,8 +32,7 @@ window.onload = function(){
     if(localStorage.getItem("files") != null){
         dataProyect = Deserialize(localStorage.getItem("files"));
     }else{
-        dataProyect.addFile("game", "js", "function awake(){\n\n}\nfunction start(){\n\n}\nfunction update(){\n\n}");
-        console.log(dataProyect);
+        dataProyect.addFile("game", "js", "function awake(){\n\n}\n\nfunction start(){\n\n}\n\nfunction update(){\n\n}");
     }
     compile();
 };

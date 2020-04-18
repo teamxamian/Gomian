@@ -1,4 +1,4 @@
-consoleEnginer = CodeMirror.fromTextArea(document.getElementById("console_enginer"), 
+var consoleEnginer = CodeMirror.fromTextArea(document.getElementById("console_enginer"), 
 {
     lineNumbers: true,
     mode: "javascript",
@@ -10,17 +10,18 @@ consoleEnginer = CodeMirror.fromTextArea(document.getElementById("console_engine
 consoleEnginer.setOption("theme", "monokai");
 (function(){
     var oldLog = console.log;
+    var oldError = console.error;
+    var oldWarn = console.warn;
     console.log = function (message) {
-        // DO MESSAGE HERE.
-        consoleEnginer.getDoc().setValue(consoleEnginer.getValue() + message.toString() + "\n");
+    	consoleEnginer.getDoc().setValue(consoleEnginer.getValue() + message.toString() + "\n");
         oldLog.apply(console, arguments);
     };
-})();
-(function(){
-    var oldError = console.error;
     console.error = function (message) {
-        // DO MESSAGE HERE.
-        consoleEnginer.getDoc().setValue(consoleEnginer.getValue() + message.toString() + "\n");
+    	consoleEnginer.getDoc().setValue(consoleEnginer.getValue() + message.toString() + "\n");
         oldError.apply(console, arguments);
+    };
+    console.warn = function (message) {
+    	consoleEnginer.getDoc().setValue(consoleEnginer.getValue() + message.toString() + "\n");
+        oldWarn.apply(console, arguments);
     };
 })();
