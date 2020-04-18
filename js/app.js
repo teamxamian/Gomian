@@ -34,5 +34,6 @@ window.onload = function(){
     }else{
         dataProyect.addFile("game", "js", "function preLoad(){\n\n}\n\nfunction create(){\n\n}\n\nfunction update(){\n\n}\n\nfunction update(time, delta){\n\n}");
     }
+    _init_();
     compile();
 };
