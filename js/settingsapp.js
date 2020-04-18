@@ -1,3 +1,14 @@
+var editorJs = CodeMirror.fromTextArea(document.getElementById("code-js"), {
+    lineNumbers: true,
+    mode: "javascript",
+    keyMap: "sublime",
+    autoCloseBrackets: true,
+    matchBrackets: true,
+    showCursorWhenSelecting: true,
+    theme: "monokai",
+    tabSize: 4,
+    extraKeys:{"Shift-Space":"autocomplete"}
+});
 function compile() {
 	var html = document.getElementById("code-html");
 	var css = document.getElementById("code-css");
@@ -9,17 +20,8 @@ function compile() {
         code.writeln("<script>" + editorJs.getValue() + "</script>");
         code.close();
     };
-    var editorJs = CodeMirror.fromTextArea(document.getElementById("code-js"), {
-        value: dataProyect.findByName("game"),
-        lineNumbers: true,
-        mode: "javascript",
-        keyMap: "sublime",
-        autoCloseBrackets: true,
-        matchBrackets: true,
-        showCursorWhenSelecting: true,
-        theme: "monokai",
-        tabSize: 4,
-        extraKeys:{"Shift-Space":"autocomplete"}
+    editorJs = CodeMirror.fromTextArea(document.getElementById("code-js"), {
+        value: dataProyect.findByName("game")
     });
     editorJs.on('keyup', function(editor, event){
         if(event.key != "{" && event.key != "}" && event.key != "Backspace" &&
@@ -34,7 +36,7 @@ function compile() {
             CodeMirror.commands.autocomplete(editor);
         }
     });
-    consoleEnginer = CodeMirror.fromTextArea(document.getElementById("console_enginer"), {
+    var consoleEnginer = CodeMirror.fromTextArea(document.getElementById("console_enginer"), {
         lineNumbers: true,
         mode: "javascript",
         showCursorWhenSelecting: true,
@@ -42,6 +44,7 @@ function compile() {
         readOnly: true,
         disableInput: true
     });
+    consoleEnginer.setOption("theme", "monokai");
     var choice = (location.hash && location.hash.slice(1)) ||
            (document.location.search &&
             decodeURIComponent(document.location.search.slice(1)));

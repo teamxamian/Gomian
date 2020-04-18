@@ -6,7 +6,7 @@ var dataProyect = {
                 for(var i = 0;i<this.files.length;i++){
                     if(this.files[i].type == t)
                     {
-                        a.push(i);
+                        a.push(this.files[i]);
                     }
                 }
                 return a;
@@ -16,7 +16,7 @@ var dataProyect = {
                 for(var i = 0;i<this.files.length;i++){
                     if(this.files[i].name == n)
                     {
-                        return i;
+                        return this.files[i];
                     }
                 }
                 return null;
