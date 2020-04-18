@@ -1,27 +1,25 @@
-var editorJs = CodeMirror.fromTextArea(document.getElementById("code-js"), {
-    lineNumbers: true,
-    mode: "javascript",
-    keyMap: "sublime",
-    autoCloseBrackets: true,
-    matchBrackets: true,
-    showCursorWhenSelecting: true,
-    theme: "monokai",
-    tabSize: 4,
-    extraKeys:{"Shift-Space":"autocomplete"}
-});
 function compile() {
-	var html = document.getElementById("code-html");
-	var css = document.getElementById("code-css");
-	var js = document.getElementById("code-js");
-	var code = document.getElementById("show-code").contentWindow.document;
+    var html = document.getElementById("code-html");
+    var css = document.getElementById("code-css");
+    var js = document.getElementById("code-js");
+    var code = document.getElementById("show-code").contentWindow.document;
 
     document.body.onkeyup = function(){
         code.open();
         code.writeln("<script>" + editorJs.getValue() + "</script>");
         code.close();
     };
-    editorJs = CodeMirror.fromTextArea(document.getElementById("code-js"), {
-        value: dataProyect.findByName("game")
+    var editorJs = CodeMirror.fromTextArea(document.getElementById("code-js"), {
+        value: dataProyect.findByName("game"),
+        lineNumbers: true,
+        mode: "javascript",
+        keyMap: "sublime",
+        autoCloseBrackets: true,
+        matchBrackets: true,
+        showCursorWhenSelecting: true,
+        theme: "monokai",
+        tabSize: 4,
+        extraKeys:{"Shift-Space":"autocomplete"}
     });
     editorJs.on('keyup', function(editor, event){
         if(event.key != "{" && event.key != "}" && event.key != "Backspace" &&
@@ -36,7 +34,7 @@ function compile() {
             CodeMirror.commands.autocomplete(editor);
         }
     });
-    var consoleEnginer = CodeMirror.fromTextArea(document.getElementById("console_enginer"), {
+    consoleEnginer = CodeMirror.fromTextArea(document.getElementById("console_enginer"), {
         lineNumbers: true,
         mode: "javascript",
         showCursorWhenSelecting: true,
@@ -44,7 +42,6 @@ function compile() {
         readOnly: true,
         disableInput: true
     });
-    consoleEnginer.setOption("theme", "monokai");
     var choice = (location.hash && location.hash.slice(1)) ||
            (document.location.search &&
             decodeURIComponent(document.location.search.slice(1)));
@@ -60,7 +57,7 @@ function compile() {
 
 var input = document.getElementById("select-theme");
 function selectTheme() {
-	var theme = input.options[input.selectedIndex].textContent;
-	editorJs.setOption("theme", theme);
-	location.hash = "#" + theme;
+    var theme = input.options[input.selectedIndex].textContent;
+    editorJs.setOption("theme", theme);
+    location.hash = "#" + theme;
 }
