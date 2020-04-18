@@ -12,7 +12,6 @@ var code = document.getElementById("show-code").contentWindow.document;
     tabSize: 4,
     extraKeys:{"Shift-Space":"autocomplete"}
 });
-
 function compile(){
     code.open();
     code.writeln("<script>" + editorJs.getValue() + "</script>");
