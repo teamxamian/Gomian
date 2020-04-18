@@ -1,23 +1,24 @@
 var input = document.getElementById("select-theme");
 var code = document.getElementById("show-code").contentWindow.document;
 
+ var editorJs = CodeMirror.fromTextArea(document.getElementById("code-js"), {
+    lineNumbers: true,
+    mode: "javascript",
+    keyMap: "sublime",
+    autoCloseBrackets: true,
+    matchBrackets: true,
+    showCursorWhenSelecting: true,
+    theme: "monokai",
+    tabSize: 4,
+    extraKeys:{"Shift-Space":"autocomplete"}
+});
+
 function compile(){
     code.open();
     code.writeln("<script>" + editorJs.getValue() + "</script>");
     code.close();
 }
 function _init_() {
-    var editorJs = CodeMirror.fromTextArea(document.getElementById("code-js"), {
-        lineNumbers: true,
-        mode: "javascript",
-        keyMap: "sublime",
-        autoCloseBrackets: true,
-        matchBrackets: true,
-        showCursorWhenSelecting: true,
-        theme: "monokai",
-        tabSize: 4,
-        extraKeys:{"Shift-Space":"autocomplete"}
-    });
     editorJs.getDoc().setValue(dataProyect.findByName("game").content);
     editorJs.on('keyup', function(editor, event){
         if(event.key != "{" && event.key != "}" && event.key != "Backspace" &&
@@ -44,9 +45,9 @@ function _init_() {
         if (theme) { input.value = theme; selectTheme(); }
     });
 
-    function selectTheme() {
-        var theme = input.options[input.selectedIndex].textContent;
-        editorJs.setOption("theme", theme);
-        location.hash = "#" + theme;
-    }
 };
+function selectTheme() {
+    var theme = input.options[input.selectedIndex].textContent;
+    editorJs.setOption("theme", theme);
+    location.hash = "#" + theme;
+}
