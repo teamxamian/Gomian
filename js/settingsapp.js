@@ -34,14 +34,6 @@ function compile() {
             CodeMirror.commands.autocomplete(editor);
         }
     });
-    consoleEnginer = CodeMirror.fromTextArea(document.getElementById("console_enginer"), {
-        lineNumbers: true,
-        mode: "javascript",
-        showCursorWhenSelecting: true,
-        theme: "monokai",
-        readOnly: true,
-        disableInput: true
-    });
     var choice = (location.hash && location.hash.slice(1)) ||
            (document.location.search &&
             decodeURIComponent(document.location.search.slice(1)));
