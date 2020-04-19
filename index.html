@@ -2,25 +2,26 @@
 <html>
   <head>
   	<title>Gomian Creator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Default Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Temas del Editor de Codigo -->
     <link rel="stylesheet" href="lib/codemirror.css">
     <link rel="stylesheet" href="theme/ayu-mirage.css">
     <link rel="stylesheet" href="theme/base16-light.css">
     <link rel="stylesheet" href="theme/eclipse.css">
     <link rel="stylesheet" href="theme/material-darker.css">
-    <link rel="stylesheet" href="theme/mdn-like.css">
-    <link rel="stylesheet" href="theme/darcula.css">
-    
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="theme/monokai.css">
+    <link rel="stylesheet" href="theme/darcula.css">    
 
+    <!-- Code Editor -->
     <script src="lib/codemirror.js"></script>
     <script src="lib/mode/javascript/javascript.js"></script>
-    <script src="lib/mode/css/css.js"></script>
-    
-
-    
+    <script src="lib/mode/css/css.js"></script>    
     <link rel="stylesheet" href="js/addon/hint/show-hint.css">
     <script src="js/addon/hint/show-hint.js"></script>
     <script src="js/addon/hint/xml-hint.js"></script>
@@ -31,7 +32,7 @@
     <script src="lib/mode/xml/xml.js"></script>
     <script src="lib/mode/htmlmixed/htmlmixed.js"></script>
 
-    <!-- Style SublimeText3 -->
+    <!-- Style Key map SublimeText3 -->
     <script src="keymap/sublime.js"></script>
 
     <script src="js/addon/active-line.js"></script>
@@ -47,9 +48,8 @@
   </head>
 
   <body>
-    <div class="container-fluid wrapper w-a m-0 p-0">
-      
-      <div class="container p-2 bg-dark">
+    <div class="container-fluid wrapper w-a m-0 p-0 bg-dark">
+      <div class="container p-2">
         <div class="row justify-content-center">
           <div class="col-3">
             <select onchange="selectTheme()" id="select-theme">
@@ -58,7 +58,7 @@
               <option>darcula</option>
               <option>eclipse</option>
               <option>material-darker</option>
-              <option>dn-like</option>
+              <option>monokai</option>
             </select>
           </div>
           <div class="col-3">
@@ -90,7 +90,7 @@
             </div>
           </div>
         </div>
-        <div class="col-5 bg-info">
+        <div class="col-5 bg-info p-0">
           <iframe id="show-code"></iframe>
         </div>
       </div>

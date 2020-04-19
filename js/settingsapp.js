@@ -8,7 +8,6 @@ var code = document.getElementById("show-code").contentWindow.document;
     autoCloseBrackets: true,
     matchBrackets: true,
     showCursorWhenSelecting: true,
-    theme: "monokai",
     tabSize: 4,
     extraKeys:{"Shift-Space":"autocomplete"}
 });
@@ -43,7 +42,7 @@ function _init_() {
         var theme = location.hash.slice(1);
         if (theme) { input.value = theme; selectTheme(); }
     });
-
+    selectTheme();
 };
 function selectTheme() {
     var theme = input.options[input.selectedIndex].textContent;
