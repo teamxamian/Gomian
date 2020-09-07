@@ -29,12 +29,14 @@ var dataProyect = {
 var js = document.getElementById("code-js");
 
 window.onload = function(){
-    if(localStorage.getItem("files") != null){
+    if(localStorage.getItem("proyect") != null){
         dataProyect = Deserialize(localStorage.getItem("files"));
     }else{
-        dataProyect.addFile("game", "js", "function preLoad(){\n\n}\n\nfunction create(){\n\n}\n\nfunction update(time, delta){\n\n}");
-        dataProyect.addFile("index", "html", "function preLoad(){\n\n}\n\nfunction create(){\n\n}\n\nfunction update(time, delta){\n\n}");
+        dataProyect.addFile("game", "js", "function start(){\n\n}\n\nfunction update(time, delta){\n\n}");
+        dataProyect.addFile("index", "html", "");
         dataProyect.addFile("style", "css", "body{ margin:0;padding:0; }");
+
+        //localStorage.setItem("proyect", Serialize(dataProyect));
     }
     _init_();
     compile();
